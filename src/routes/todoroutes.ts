@@ -1,36 +1,14 @@
 import { Router } from "express";
+import { getTodos, createTodo, updateTodo, deleteTodo } from "../controllers/todoController.js";
 
 const router = Router();
 
-router.get("/todos", (req, res) => {
-  res.json([
-    {
-      id: 1,
-      title: "TypeScript öğren",
-      completed: false
-    },
-    {
-      id: 2,
-      title: "REST API öğren",
-      completed: false
-    }
-  ]);
-});
-router.post("/todos", (req, res) => {
-  const newTodo = req.body;
+router.get("/todos", getTodos);
 
-  res.status(201).json(newTodo);
-});
+router.post("/todos", createTodo);
 
-router.put("/todos/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const updatedTodo = req.body;
+router.put("/todos/:id", updateTodo);
 
-  res.json({
-    id: id,
-    title: updatedTodo.title,
-    completed: updatedTodo.completed
-  });
-});
+router.delete("/todos/:id", deleteTodo);
 
 export default router;
