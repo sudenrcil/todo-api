@@ -4,6 +4,7 @@ import {
   updateTodo as updateTodoService
 } from "../services/todoService.js";
 import type { Request, Response } from "express";
+import type { Todo } from "../domain/todo.js";
 
 export const getTodos = (req: Request, res: Response) => {
   const todos = getAllTodos();
@@ -11,13 +12,13 @@ export const getTodos = (req: Request, res: Response) => {
   res.json(todos);
 };
 export const createTodo = (req: Request, res: Response) => {
-  const newTodo = createTodoService(req.body);
+  const newTodo: Todo = createTodoService(req.body);
 
   res.status(201).json(newTodo);
 };
 export const updateTodo = (req: Request, res: Response) => {
   const id = Number(req.params.id);
-  const updatedTodo = updateTodoService(id, req.body);
+  const updatedTodo: Todo = updateTodoService(id, req.body);
 
   res.json(updatedTodo);
 };

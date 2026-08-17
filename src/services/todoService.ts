@@ -1,3 +1,4 @@
+import type { Todo } from "../domain/todo.js";
 export const getAllTodos = () => {
   return [
     {
@@ -15,7 +16,7 @@ export const getAllTodos = () => {
 export const createTodo = (todo: any) => {
   return todo;
 };
-export const updateTodo = (id: number, todo: any) => {
+export const updateTodo = (id: number, todo: Todo) => {
   return {
     id: id,
     title: todo.title,
